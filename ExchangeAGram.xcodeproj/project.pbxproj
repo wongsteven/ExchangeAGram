@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		88D930061B2C8B5400304144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D930051B2C8B5400304144 /* AppDelegate.swift */; };
 		88D930091B2C8B5400304144 /* ExchangeAGram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88D930071B2C8B5400304144 /* ExchangeAGram.xcdatamodeld */; };
-		88D9300B1B2C8B5400304144 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9300A1B2C8B5400304144 /* ViewController.swift */; };
 		88D9300E1B2C8B5400304144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D9300C1B2C8B5400304144 /* Main.storyboard */; };
 		88D930101B2C8B5400304144 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88D9300F1B2C8B5400304144 /* Images.xcassets */; };
 		88D930131B2C8B5400304144 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D930111B2C8B5400304144 /* LaunchScreen.xib */; };
 		88D9301F1B2C8B5500304144 /* ExchangeAGramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9301E1B2C8B5500304144 /* ExchangeAGramTests.swift */; };
+		88D930291B2C8D2F00304144 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D930281B2C8D2F00304144 /* FeedViewController.swift */; };
+		88D9302B1B2C8F4900304144 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D9302A1B2C8F4900304144 /* FeedCell.swift */; };
+		88EC5B821B2D24C100908E63 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EC5B811B2D24C100908E63 /* MobileCoreServices.framework */; };
+		88FF752E1B2E2B4D002F74E8 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +34,16 @@
 		88D930041B2C8B5400304144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D930051B2C8B5400304144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88D930081B2C8B5400304144 /* ExchangeAGram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExchangeAGram.xcdatamodel; sourceTree = "<group>"; };
-		88D9300A1B2C8B5400304144 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88D9300D1B2C8B5400304144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88D9300F1B2C8B5400304144 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		88D930121B2C8B5400304144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		88D930181B2C8B5500304144 /* ExchangeAGramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExchangeAGramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D9301D1B2C8B5500304144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D9301E1B2C8B5500304144 /* ExchangeAGramTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeAGramTests.swift; sourceTree = "<group>"; };
+		88D930281B2C8D2F00304144 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		88D9302A1B2C8F4900304144 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		88EC5B811B2D24C100908E63 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88EC5B821B2D24C100908E63 /* MobileCoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,11 +87,13 @@
 			isa = PBXGroup;
 			children = (
 				88D930051B2C8B5400304144 /* AppDelegate.swift */,
-				88D9300A1B2C8B5400304144 /* ViewController.swift */,
+				88D930281B2C8D2F00304144 /* FeedViewController.swift */,
+				88D9302A1B2C8F4900304144 /* FeedCell.swift */,
 				88D9300C1B2C8B5400304144 /* Main.storyboard */,
 				88D9300F1B2C8B5400304144 /* Images.xcassets */,
 				88D930111B2C8B5400304144 /* LaunchScreen.xib */,
 				88D930071B2C8B5400304144 /* ExchangeAGram.xcdatamodeld */,
+				88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */,
 				88D930031B2C8B5400304144 /* Supporting Files */,
 			);
 			path = ExchangeAGram;
@@ -93,6 +102,7 @@
 		88D930031B2C8B5400304144 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				88EC5B811B2D24C100908E63 /* MobileCoreServices.framework */,
 				88D930041B2C8B5400304144 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -215,8 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D9300B1B2C8B5400304144 /* ViewController.swift in Sources */,
 				88D930061B2C8B5400304144 /* AppDelegate.swift in Sources */,
+				88D9302B1B2C8F4900304144 /* FeedCell.swift in Sources */,
+				88D930291B2C8D2F00304144 /* FeedViewController.swift in Sources */,
+				88FF752E1B2E2B4D002F74E8 /* FeedItem.swift in Sources */,
 				88D930091B2C8B5400304144 /* ExchangeAGram.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +423,7 @@
 				88D930241B2C8B5500304144 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88D930251B2C8B5500304144 /* Build configuration list for PBXNativeTarget "ExchangeAGramTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +432,7 @@
 				88D930271B2C8B5500304144 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
