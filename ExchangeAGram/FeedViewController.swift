@@ -122,8 +122,8 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         return cell
     }
     
-    //  UICollectionViewDelegate
-    //  This functionality transitions/segues to the FilterViewController
+    /*  UICollectionViewDelegate
+        This functionality transitions/segues to the FilterViewController */
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let thisItem = feedArray[indexPath.row] as FeedItem
         

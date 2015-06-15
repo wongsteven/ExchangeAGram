@@ -18,6 +18,7 @@
 		88EC5B821B2D24C100908E63 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EC5B811B2D24C100908E63 /* MobileCoreServices.framework */; };
 		88FF752E1B2E2B4D002F74E8 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */; };
 		88FF75301B2E3B38002F74E8 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF752F1B2E3B38002F74E8 /* FilterViewController.swift */; };
+		88FF75321B2E723B002F74E8 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF75311B2E723B002F74E8 /* FilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		88EC5B811B2D24C100908E63 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		88FF752F1B2E3B38002F74E8 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		88FF75311B2E723B002F74E8 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,13 +92,15 @@
 			children = (
 				88D930051B2C8B5400304144 /* AppDelegate.swift */,
 				88D930281B2C8D2F00304144 /* FeedViewController.swift */,
-				88FF752F1B2E3B38002F74E8 /* FilterViewController.swift */,
 				88D9302A1B2C8F4900304144 /* FeedCell.swift */,
+				88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */,
+				88FF752F1B2E3B38002F74E8 /* FilterViewController.swift */,
+				88FF75311B2E723B002F74E8 /* FilterCell.swift */,
 				88D9300C1B2C8B5400304144 /* Main.storyboard */,
+				88FF75331B2E763D002F74E8 /* ExchangeAGramPlaceHolders */,
 				88D9300F1B2C8B5400304144 /* Images.xcassets */,
 				88D930111B2C8B5400304144 /* LaunchScreen.xib */,
 				88D930071B2C8B5400304144 /* ExchangeAGram.xcdatamodeld */,
-				88FF752D1B2E2B4D002F74E8 /* FeedItem.swift */,
 				88D930031B2C8B5400304144 /* Supporting Files */,
 			);
 			path = ExchangeAGram;
@@ -126,6 +130,14 @@
 				88D9301D1B2C8B5500304144 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		88FF75331B2E763D002F74E8 /* ExchangeAGramPlaceHolders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ExchangeAGramPlaceHolders;
+			path = ../../ExchangeAGramPlaceHolders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FF75321B2E723B002F74E8 /* FilterCell.swift in Sources */,
 				88FF75301B2E3B38002F74E8 /* FilterViewController.swift in Sources */,
 				88D930061B2C8B5400304144 /* AppDelegate.swift in Sources */,
 				88D9302B1B2C8F4900304144 /* FeedCell.swift in Sources */,

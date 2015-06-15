@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gxz-Tf-Qso">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Feed View Controller-->
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gES-5v-P7W">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gES-5v-P7W">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swr-eW-Mvk">
                                     <size key="itemSize" width="150" height="150"/>
@@ -68,9 +69,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="556"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="fZU-18-mCJ"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="sSI-dW-Wkl"/>
@@ -78,6 +76,34 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="gES-5v-P7W" secondAttribute="bottom" id="5WD-iE-Yd0">
+                                <variation key="widthClass=compact" constant="-20"/>
+                            </constraint>
+                            <constraint firstItem="gES-5v-P7W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AoM-pU-2an">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
+                            <constraint firstItem="gES-5v-P7W" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="FD1-xW-Rdf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gES-5v-P7W" secondAttribute="trailing" id="xWg-MM-0EZ">
+                                <variation key="widthClass=compact" constant="-16"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5WD-iE-Yd0"/>
+                                <exclude reference="AoM-pU-2an"/>
+                                <exclude reference="FD1-xW-Rdf"/>
+                                <exclude reference="xWg-MM-0EZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="5WD-iE-Yd0"/>
+                                <include reference="AoM-pU-2an"/>
+                                <include reference="FD1-xW-Rdf"/>
+                                <include reference="xWg-MM-0EZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="uyT-U0-bEG">
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="Xjl-9s-0yg">
