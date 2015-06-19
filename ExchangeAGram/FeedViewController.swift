@@ -81,6 +81,9 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         //  Converts image into a data representation of our image which we can use this as our Binary data that we set up as our FeedItem
         let imageData = UIImageJPEGRepresentation(image, 1.0)
         
+        //  Implement thumbnail data
+        let thumbNaildata = UIImageJPEGRepresentation(image, 0.1)
+        
         //  Process to create FeedItem. Create managedObjectContext and entityDescription
         let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
         let entityDescription = NSEntityDescription.entityForName("FeedItem", inManagedObjectContext: managedObjectContext!)
@@ -89,6 +92,7 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         feedItem.image = imageData
         feedItem.caption = "test caption"
+        feedItem.thumbNail = thumbNaildata
         
         //  Save all the changes that are made to the entity
         (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
