@@ -17,12 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        //  Set aside some memory for cache
-        let cache = NSURLCache(memoryCapacity: 8*1024*1024, diskCapacity: 20*1024*1024, diskPath: nil)
+        let cache = NSURLCache(memoryCapacity: 8 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
         NSURLCache.setSharedURLCache(cache)
         
+        // *** Add this Code Here ***
+        FBLoginView.self
+        FBProfilePictureView.self
+        
         return true
+    }
+    
+    //  Open up again after the user has validated login credentials
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        return wasHandled
     }
     
     //  Automatically clear out cache when receive memory warning

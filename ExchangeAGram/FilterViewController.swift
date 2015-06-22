@@ -17,6 +17,9 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
     var filters:[CIFilter] = []
     let placeHolderImage = UIImage(named: "Placeholder")
     
+    //  NSTemporaryDirectory will automatically clear out the items by itself
+    let tmp = NSTemporaryDirectory()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,22 +56,40 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         //  Optimization: Only show image view's image first time we load the view controller
         
-        if cell.imageView.image == nil {
-            cell.imageView.image = placeHolderImage
+        cell.imageView.image = placeHolderImage
+        
+        let filterQueue:dispatch_queue_t = dispatch_queue_create("filter queue", nil)
+        
+        //  Tell queue what code to run
+        dispatch_async(filterQueue, { () -> Void in
             
-            let filterQueue:dispatch_queue_t = dispatch_queue_create("filter queue", nil)
+            let filterImage = self.getCachedImage(indexPath.row)
             
-            //  Tell queue what code to run
-            dispatch_async(filterQueue, { () -> Void in
-                let filterImage = self.filteredImageFromImage(self.thisFeedItem.thumbNail, filter: self.filters[indexPath.row])
-                
-                //  Get back to main thread after we get filtered image
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    cell.imageView.image = filterImage
-                })
+            //  Get back to main thread after we get filtered image
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                cell.imageView.image = filterImage
             })
-        }
+        })
+
         return cell
+    }
+    
+    //  UICollectionViewDelegate
+    //  Using image instead of thumbnail because we want to filter the main image
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let filterImage = self.filteredImageFromImage(self.thisFeedItem.image, filter: self.filters[indexPath.row])
+        let imageData = UIImageJPEGRepresentation(filterImage, 1.0)
+        //  Update thisFeedItem with new item
+        self.thisFeedItem.image = imageData
+        
+        //  Update thumbnail
+        let thumbNailData = UIImageJPEGRepresentation(filterImage, 0.1)
+        self.thisFeedItem.thumbNail = thumbNailData
+        
+        //  Save to file system
+        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     //  Helper function
@@ -114,5 +135,40 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
         let finalImage = UIImage(CGImage: cgImage)
         
         return finalImage!
+    }
+    
+    //  Caching functions
+    func cacheImage(imageNumber: Int){
+        //  Create a filename
+        let fileName = "\(imageNumber)"
+        //  Create a unique path for the directory. Each image in collectionview has a unique number.
+        let uniquePath = tmp.stringByAppendingPathComponent(fileName)
+        
+        //  Checking to see if file exists at file path. If it doesn't exist, we want to generate a filter.
+        if !NSFileManager.defaultManager().fileExistsAtPath(fileName){
+            
+            //  Generate image with fitler
+            let data = self.thisFeedItem.thumbNail
+            let filter = self.filters[imageNumber]
+            let image = filteredImageFromImage(data, filter: filter)
+            
+            //  Save this to data
+            UIImageJPEGRepresentation(image, 1.0).writeToFile(uniquePath, atomically: true)
+        }
+    }
+    
+    //  Ability to receive cache function
+    func getCachedImage(imageNumber:Int) -> UIImage {
+        let fileName = "\(imageNumber)"
+        let uniquePath = tmp.stringByAppendingPathComponent(fileName)
+        
+        var image:UIImage
+        if NSFileManager.defaultManager().fileExistsAtPath(uniquePath){
+            image = UIImage(contentsOfFile: uniquePath)!
+        } else {
+            self.cacheImage(imageNumber)
+            image = UIImage(contentsOfFile: uniquePath)!
+        }
+        return image
     }
 }

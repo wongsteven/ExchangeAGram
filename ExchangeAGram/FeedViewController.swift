@@ -22,7 +22,9 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         let request = NSFetchRequest(entityName: "FeedItem")
         
         //  This will give us access to the AppDelegate instance and with that we can get access to our NSManagedContext
@@ -31,10 +33,17 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         //  Executes fetch request
         feedArray = context.executeFetchRequest(request, error: nil)!
+        
+        //  Refresh collection view
+        collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func profileTapped(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("profileSegue", sender: nil)
     }
     
     //  Camera button on storyboard
