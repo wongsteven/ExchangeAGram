@@ -77,19 +77,9 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
     //  UICollectionViewDelegate
     //  Using image instead of thumbnail because we want to filter the main image
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let filterImage = self.filteredImageFromImage(self.thisFeedItem.image, filter: self.filters[indexPath.row])
-        let imageData = UIImageJPEGRepresentation(filterImage, 1.0)
-        //  Update thisFeedItem with new item
-        self.thisFeedItem.image = imageData
         
-        //  Update thumbnail
-        let thumbNailData = UIImageJPEGRepresentation(filterImage, 0.1)
-        self.thisFeedItem.thumbNail = thumbNailData
-        
-        //  Save to file system
-        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
-        
-        self.navigationController?.popViewControllerAnimated(true)
+        self.createUIAlertController(indexPath)
+
     }
     
     //  Helper function
@@ -135,6 +125,85 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
         let finalImage = UIImage(CGImage: cgImage)
         
         return finalImage!
+    }
+    
+    //  UIALertController Helper Functions
+    
+    func createUIAlertController(indexPath: NSIndexPath){
+        let alert = UIAlertController(title: "Photo Options:", message: "Please choose an option.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Add Caption"
+            textField.secureTextEntry = false
+            
+        let textField = alert.textFields![0] as UITextField
+            
+        let photoAction = UIAlertAction(title: "Post photo on Facebook with caption", style: UIAlertActionStyle.Destructive, handler: { (UIAlertAction) -> Void in
+
+            var text = textField.text
+
+            self.saveFilterToCoreData(indexPath, caption: text)
+            self.shareToFacebook(indexPath)
+        })
+            
+        alert.addAction(photoAction)
+            
+        let saveFilterAction = UIAlertAction(title: "Save filter without posting on Facebook", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+
+            var text = textField.text
+
+            self.saveFilterToCoreData(indexPath, caption: text)
+        })
+        
+        alert.addAction(saveFilterAction)
+            
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (UIAlertAction) -> Void in
+            
+        })
+            
+        alert.addAction(cancelAction)
+            
+        //  Display on screen
+        self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //  Helper fucnction
+    func saveFilterToCoreData(indexPath:NSIndexPath,caption:String){
+        let filterImage = self.filteredImageFromImage(self.thisFeedItem.image, filter: self.filters[indexPath.row])
+        let imageData = UIImageJPEGRepresentation(filterImage, 1.0)
+        //  Update thisFeedItem with new item
+        self.thisFeedItem.image = imageData
+
+        //  Update thumbnail
+        let thumbNailData = UIImageJPEGRepresentation(filterImage, 0.1)
+        self.thisFeedItem.thumbNail = thumbNailData
+        
+        self.thisFeedItem.caption = caption
+
+        //  Save to file system
+        (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+        
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    //  Share image on facebook
+    func shareToFacebook(indexPath:NSIndexPath){
+        let filterImage = self.filteredImageFromImage(self.thisFeedItem.image, filter: self.filters[indexPath.row])
+        
+        //  FB Parameter that we will be using is expecting an NSArray
+        let photos:NSArray = [filterImage]
+        let params = FBPhotoParams()
+        params.photos = photos
+        
+        //
+        FBDialogs.presentMessageDialogWithPhotoParams(params, clientState: nil) { (call, result, error) -> Void in
+            if (result? != nil){
+                println(result)
+            } else {
+                println(error)
+            }
+        }
+        
     }
     
     //  Caching functions
