@@ -38,6 +38,12 @@
 	</array>
 	<key>FacebookAppID</key>
 	<string>357045954490114</string>
+	<key>NSLocationUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>FacebookDisplayName</key>
 	<string>ExchangeAG</string>
 	<key>CFBundleURLTypes</key>

@@ -13,15 +13,34 @@ import MobileCoreServices
 //  This will allow us to create FeedItems as well as access the NSObjects context from the appdelegate
 import CoreData
 
-class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+import MapKit
+
+class FeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     //  Add additional property to interact with CoreData
     var feedArray:[AnyObject] = []
     
+    //  CLLocationManager to handle all location matters
+    var locationManager: CLLocationManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        //  This will give us the best location accuracy
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        //  Requests permission to use location services
+        locationManager.requestAlwaysAuthorization()
+        
+        //  How much distance should occur before we let location manager know of the change
+        locationManager.distanceFilter = 100.0
+        
+        //  Start looking for user's location
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -145,5 +164,10 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         filterVC.thisFeedItem = thisItem
         
         self.navigationController?.pushViewController(filterVC, animated: false)
+    }
+    
+    //  CLLocationmanagerDelegate
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        println("locations = \(locations)")
     }
 }
