@@ -122,6 +122,9 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         feedItem.caption = "test caption"
         feedItem.thumbNail = thumbNaildata
         
+        feedItem.latitude = locationManager.location.coordinate.latitude
+        feedItem.longitude = locationManager.location.coordinate.longitude
+        
         //  Save all the changes that are made to the entity
         (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
         
