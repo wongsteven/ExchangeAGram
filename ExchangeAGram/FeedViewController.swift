@@ -27,6 +27,10 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backgroundImage = UIImage(named: "AutumnBackground")
+        self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
@@ -124,6 +128,9 @@ class FeedViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         feedItem.latitude = locationManager.location.coordinate.latitude
         feedItem.longitude = locationManager.location.coordinate.longitude
+        
+        let UUID = NSUUID().UUIDString
+        feedItem.uniqueID = UUID
         
         //  Save all the changes that are made to the entity
         (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()

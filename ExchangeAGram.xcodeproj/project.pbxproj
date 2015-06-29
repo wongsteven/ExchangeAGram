@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		880FC8FC1B39A744002682C9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC8FB1B39A744002682C9 /* MapViewController.swift */; };
 		880FC8FE1B39A981002682C9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 880FC8FD1B39A981002682C9 /* MapKit.framework */; };
-		880FC9001B3A39D7002682C9 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880FC8FF1B3A39D7002682C9 /* FeedItem.swift */; };
 		88CA6EF41B37A42F0019BDDC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CA6EF31B37A42F0019BDDC /* ProfileViewController.swift */; };
 		88CA6EFA1B37BD360019BDDC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CA6EF91B37BD360019BDDC /* FacebookSDK.framework */; };
+		88D729EC1B3C4679001424FB /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D729EB1B3C4679001424FB /* FeedItem.swift */; };
 		88D930061B2C8B5400304144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D930051B2C8B5400304144 /* AppDelegate.swift */; };
 		88D930091B2C8B5400304144 /* ExchangeAGram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88D930071B2C8B5400304144 /* ExchangeAGram.xcdatamodeld */; };
 		88D9300E1B2C8B5400304144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D9300C1B2C8B5400304144 /* Main.storyboard */; };
@@ -38,10 +38,10 @@
 /* Begin PBXFileReference section */
 		880FC8FB1B39A744002682C9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		880FC8FD1B39A981002682C9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		880FC8FF1B3A39D7002682C9 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		88CA6EF31B37A42F0019BDDC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		88CA6EF91B37BD360019BDDC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		88CA6EFB1B37BF410019BDDC /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		88D729EB1B3C4679001424FB /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		88D930001B2C8B5400304144 /* ExchangeAGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeAGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D930041B2C8B5400304144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D930051B2C8B5400304144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				88D930071B2C8B5400304144 /* ExchangeAGram.xcdatamodeld */,
-				880FC8FF1B3A39D7002682C9 /* FeedItem.swift */,
+				88D729EB1B3C4679001424FB /* FeedItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -260,7 +260,7 @@
 				88D930061B2C8B5400304144 /* AppDelegate.swift in Sources */,
 				88D9302B1B2C8F4900304144 /* FeedCell.swift in Sources */,
 				880FC8FC1B39A744002682C9 /* MapViewController.swift in Sources */,
-				880FC9001B3A39D7002682C9 /* FeedItem.swift in Sources */,
+				88D729EC1B3C4679001424FB /* FeedItem.swift in Sources */,
 				88D930291B2C8D2F00304144 /* FeedViewController.swift in Sources */,
 				88CA6EF41B37A42F0019BDDC /* ProfileViewController.swift in Sources */,
 				88D930091B2C8B5400304144 /* ExchangeAGram.xcdatamodeld in Sources */,

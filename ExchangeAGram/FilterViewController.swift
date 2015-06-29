@@ -209,7 +209,7 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
     //  Caching functions
     func cacheImage(imageNumber: Int){
         //  Create a filename
-        let fileName = "\(imageNumber)"
+        let fileName = "\(thisFeedItem.uniqueID)\(imageNumber)"
         //  Create a unique path for the directory. Each image in collectionview has a unique number.
         let uniquePath = tmp.stringByAppendingPathComponent(fileName)
         
@@ -228,7 +228,7 @@ class FilterViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     //  Ability to receive cache function
     func getCachedImage(imageNumber:Int) -> UIImage {
-        let fileName = "\(imageNumber)"
+        let fileName = "\(thisFeedItem.uniqueID)\(imageNumber)"
         let uniquePath = tmp.stringByAppendingPathComponent(fileName)
         
         var image:UIImage
